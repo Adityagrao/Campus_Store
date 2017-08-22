@@ -16,10 +16,12 @@ class School(models.Model):
     code = models.CharField(max_length=10, unique=True)
 
 class Book (models.Model):
+    school_name = models.ForeignKey(School)
     class_name = models.CharField(max_length=50)
-    bundle = models.BooleanField
-    perticular = models.CharField(max_length=50)
-    ammount = models.IntegerField
-    tax = models.IntegerField
-    total = models.IntegerField
+    bundle = models.CharField(max_length=20)
+    particulars = models.CharField(max_length=50)
+    amount = models.DecimalField(max_digits=7,decimal_places=3,default=0)
+    tax_CGST = models.DecimalField(max_digits=7,decimal_places=3,default=0)
+    tax_SGST = models.DecimalField(max_digits=7,decimal_places=3,default=0)
+    total = models.DecimalField(max_digits=7,decimal_places=3,default=0)
 
