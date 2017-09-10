@@ -12,6 +12,16 @@ def login_view(request):
         password = form.cleaned_data.get('password')
     return render(request, "school/login.html", {"form": form})
 
-
 def logout_view(request):
     return render(request, "school/logout.html", {})
+
+def parent_user(request):
+    return render(request, "parent_user/index.html", {})
+
+def school_admin(request):
+    return render(request, "school_admin/index.html", {})
+
+def super_admin(request):
+	return render(request, "super_admin/index.html", {})
+
+
