@@ -1,5 +1,3 @@
 Dashboard (Schools Orders Register)
-Recent Orders
 Perchase details by school PDF CSV
-Perticulers Camma seperted variables
 
