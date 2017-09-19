@@ -49,10 +49,12 @@ class Book(models.Model):
 class User(models.Model):
     school_id = models.ForeignKey(School)
     username = models.CharField(max_length=50, unique=True)
+    student_name = models.CharField(max_length=50)
     dob = models.DateField()
     admission_number = models.CharField(max_length=50)
     name_of_parent = models.CharField(max_length=50)
     mobile_no = models.CharField(max_length=10)
+    address = models.CharField(max_length=200)
     email_id = models.CharField(max_length=75)
     password = models.CharField(max_length=75)
 
