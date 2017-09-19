@@ -20,16 +20,27 @@ class School(models.Model):
         return self.name
 
 
+class Category(models.Model):
+    category = models.CharField(max_length=50, default=None)
+
+    def __str__(self):
+        return self.category
+
+
 class Book(models.Model):
     school_id = models.ForeignKey(School)
-    name = models.CharField(max_length=100, default=None, blank=None)
+    name = models.CharField(max_length=100, default=None, blank=None, unique=True)
+
     class_name = models.CharField(max_length=50)
-    bundle = models.CharField(max_length=20)
+    category = models.ForeignKey(Category)
+    bundle = models.CharField(max_length=20, unique=True)
     particulars = models.CharField(max_length=50)
+    tax_code = models.CharField(max_length=50, default=None)
     amount = models.FloatField()
-    tax_CGST = models.FloatField()
-    tax_SGST = models.FloatField()
+    tax_CGST = models.FloatField(default=0)
+    tax_SGST = models.FloatField(default=0)
     total = models.FloatField()
+    grand_total = models.FloatField(default=None)
 
     def __str__(self):
         return self.name
@@ -56,4 +67,3 @@ class Order(models.Model):
     order_time = models.DateTimeField(auto_now_add=True)
     total = models.FloatField()
     processed = models.BooleanField(default=False)
-

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import School, Book, User, Order
+from .models import School, Book, User, Order, Category
 
 # Register your models here.
 
@@ -10,6 +10,8 @@ class SchoolAdmin(admin.ModelAdmin):
     list_filter = ('name', 'status')
     search_fields = ('name', 'company')
 
+class CategoryAdmin(admin.ModelAdmin):
+    pass
 
 class BookAdmin(admin.ModelAdmin):
     list_display = ('name', 'class_name', 'bundle', 'particulars', 'total')
@@ -30,3 +32,4 @@ admin.site.register(School, SchoolAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(User, UserAdmin)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(Category, CategoryAdmin)
