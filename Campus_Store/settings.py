@@ -78,7 +78,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+# DATABASES = {
+#     'default': dict(ENGINE='django.db.backends.mysql', NAME='campusstore', USER='root', PASSWORD='', HOST='localhost',
+#                     PORT='')
+# }
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 

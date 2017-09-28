@@ -30,7 +30,6 @@ class Category(models.Model):
 class Book(models.Model):
     school_id = models.ForeignKey(School)
     name = models.CharField(max_length=100, default=None, blank=None, unique=True)
-
     class_name = models.CharField(max_length=50)
     category = models.ForeignKey(Category)
     bundle = models.CharField(max_length=20, unique=True)
@@ -39,8 +38,15 @@ class Book(models.Model):
     amount = models.FloatField()
     tax_CGST = models.FloatField(default=0)
     tax_SGST = models.FloatField(default=0)
-    total = models.FloatField()
-    grand_total = models.FloatField(default=None)
+    total = models.FloatField(default=0)
+
+    def save(self, *args, **kwargs):
+        self.total = self.total()
+        return super(Book, self).save(*args, **kwargs)
+
+    def total(self):
+        total_tax = self.tax_SGST + self.tax_CGST
+        return ((total_tax * self.amount) / 100) + self.amount
 
     def __str__(self):
         return self.name
